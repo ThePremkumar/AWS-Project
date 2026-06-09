@@ -770,6 +770,6 @@ SOFTWARE.
 ![Made in India](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-India-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)
 
-*© 2026 Prem Kumar S · Krishnagiri, Tamil Nadu, India*
+*© 2025 Prem Kumar S *
 
 </div>
