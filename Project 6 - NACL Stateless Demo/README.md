@@ -10,9 +10,16 @@
 
 # 🔄 Project 6: NACL Stateless Demo
 
-> **Prove NACL statefulness vs statelessness** — demonstrate that blocking outbound ephemeral ports (`1024–65535`) in a NACL breaks HTTP responses even when inbound HTTP port 80 is explicitly allowed, because NACLs evaluate every packet independently with no connection memory.
+## Objective
+Allow inbound: `80`
+Remove outbound ephemeral ports: `1024-65535`
 
-This project is the **direct counterpart to Project 5** (Security Group Stateful Demo). Where a Security Group automatically permits return traffic for any allowed inbound connection, a NACL does not. By blocking outbound ports `1024–65535` while keeping inbound port 80 open, this project proves that NACLs are **stateless** — each packet is independently evaluated, and a missing outbound rule kills the HTTP response stream.
+**Result:**
+Website fails.
+
+## Learning
+NACL = Stateless
+Return traffic requires explicit rule.
 
 ---
 

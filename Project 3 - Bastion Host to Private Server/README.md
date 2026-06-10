@@ -9,9 +9,37 @@
 
 # 🛡️ Project 3: Bastion Host to Private Server
 
-> **Design and implement a multi-subnet network architecture featuring a public Bastion Host (Jump Box) to securely proxy SSH traffic to an isolated instance in a private subnet, leveraging Security Group referencing.**
+## Objective
+* Public EC2 in Public Subnet
+* Private EC2 in Private Subnet
+* Login to Private EC2 through Bastion
 
-This project demonstrates production-grade VPC network segregation. The backend target instance is fully isolated in a private subnet with no public IP. Administrative access is managed through a Bastion Host deployed in a public subnet. The security relationship between the two hosts is governed strictly by Security Group referencing, where the private instance's Security Group permits SSH traffic exclusively from members of the Bastion's Security Group, eliminating the need to hardcode dynamic IP addresses.
+## Architecture
+```text
+Internet
+   │
+   ▼
+Public EC2 (Bastion)
+   │ SSH
+   ▼
+Private EC2
+```
+
+## SG Configuration
+*Bastion SG*
+| Port | Source |
+|---|---|
+| 22 | Your IP |
+
+*Private EC2 SG*
+| Port | Source |
+|---|---|
+| 22 | Bastion SG |
+
+## Learning
+✅ Private Subnet Concept
+✅ SG Referencing
+✅ Secure Access
 
 ---
 

@@ -11,9 +11,28 @@
 
 # 🛡️ Project 2: NACL Blocking Website
 
-> **Demonstrate AWS Network ACL as a stateless subnet-level firewall** — prove that a NACL DENY rule at rule number 101 overrides a permissive Security Group and completely blocks HTTP traffic to a live Apache web server, with browser-verified before-and-after evidence.
+## Objective
+Website works initially.
+Then:
+* Add DENY Rule for Port 80 in NACL
 
-This project goes beyond Security Groups to explore the second and most commonly overlooked layer of AWS network security: **Network Access Control Lists (NACLs)**. By intentionally blocking port 80 at the subnet boundary, this project isolates and proves exactly where in the traffic path AWS drops packets — and why Apache never sees the request.
+**Result:**
+❌ Website not accessible
+
+## Architecture
+```text
+Internet
+   │
+   ▼
+NACL (Deny Port 80)
+   │
+   ▼
+EC2 Apache
+```
+
+## Learning
+Students understand:
+Security Group allows but NACL denies = Traffic blocked
 
 ---
 

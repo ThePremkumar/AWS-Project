@@ -9,9 +9,17 @@
 
 # 🔐 Project 7: Secure Admin Network
 
-> **Implement IP-based Access Control Lists (ACLs) using Security Groups to restrict SSH administrative access to whitelisted workstation IPs, preventing unauthorized connection attempts from the public internet.**
+## Scenario
+Company Admin Team:
+`192.168.1.10`
+`192.168.1.20`
+Only they can SSH.
 
-This project demonstrates the design, configuration, and verification of host-level security controls in AWS. By restricting SSH access on port 22 to specific `/32` admin IPs inside the Security Group rules, we eliminate the risk of brute-force attacks and scanning attempts from unauthorized actors, while verifying the network controls from both authorized and unauthorized sources.
+## SG Rule
+`22` → Specific IP
+
+## Learning
+Production Security Practice
 
 ---
 

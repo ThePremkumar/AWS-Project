@@ -10,9 +10,40 @@
 
 # 🌐 Project 1: Public Web Server Access Control
 
-> **Deploy a publicly accessible Apache HTTP web server on AWS** — built inside a custom VPC with a hardened security group, restricted SSH management plane, and end-to-end validated browser connectivity over HTTP.
+## Objective
+* Launch EC2 in Public Subnet
+* Install Apache
+* Allow HTTP (80)
+* Block SSH from unwanted IPs
 
-This project models a real-world baseline cloud infrastructure pattern: isolating compute in a purpose-built network, exposing only what is necessary to the public internet, and locking down administrative access to a known IP.
+## Architecture
+```text
+Internet
+   │
+   ▼
+Security Group
+   │
+   ▼
+Public EC2 (Apache)
+```
+
+## SG Rules
+| Type | Port | Source |
+|---|---|---|
+| SSH | 22 | Your IP |
+| HTTP | 80 | 0.0.0.0/0 |
+
+## NACL Rules
+| Rule | Port | Action |
+|---|---|---|
+| 100 | 80 | Allow |
+| 110 | 22 | Allow |
+| * | All | Deny |
+
+## Learning
+✅ SG Stateful
+✅ NACL Stateless
+✅ Public Access
 
 ---
 

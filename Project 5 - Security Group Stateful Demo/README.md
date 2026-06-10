@@ -10,9 +10,14 @@
 
 # 🔐 Project 5: Security Group Stateful Demo
 
-> **Demonstrate the stateful behaviour of AWS Security Groups** — prove that a single SSH inbound rule is sufficient for a complete interactive session, because Security Groups automatically permit return traffic without any explicit outbound rule.
+## Objective
+Allow: `SSH TCP 22` only.
+Connect using SSH.
+Observe: No outbound rule needed. Traffic still returns.
 
-This project isolates and proves one of the most important and commonly misunderstood properties of AWS Security Groups: **statefulness**. With only one inbound rule (SSH port 22) and the default outbound rule, a complete SSH login, command execution, and session teardown works flawlessly — while a stateless equivalent would require explicit bidirectional rules.
+## Learning
+Security Group = Stateful
+Return traffic automatically allowed.
 
 ---
 

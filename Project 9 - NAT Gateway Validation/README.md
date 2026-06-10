@@ -9,9 +9,22 @@
 
 # 🌐 Project 9: NAT Gateway Validation
 
-> **Deploy and configure an AWS Managed NAT Gateway inside a public subnet to grant secure, outbound-only internet connectivity to an isolated EC2 instance in a private subnet, validating its operation via system package updates.**
+## Architecture
+```text
+Internet
+   │
+NAT Gateway
+   │
+Private EC2
+```
 
-This project demonstrates the execution of a key network engineering pattern in AWS: enabling secure internet egress for isolated resources. The backend target instance is fully isolated in a private subnet with no public IPv4 address and no direct path to the Internet Gateway. By deploying an AWS Managed Network Address Translation (NAT) Gateway inside the public subnet, associating an Elastic IP (EIP), and routing egress traffic (`0.0.0.0/0`) through this gateway, we permit the private host to communicate outbound with the internet (e.g., to fetch package updates via `dnf update`) while strictly blocking all inbound connection attempts initiated from the public internet.
+## Objective
+Run: `sudo dnf update -y`
+Before NAT: ❌ Fail
+After NAT: ✅ Success
+
+## Learning
+Private instances access internet without public IP.
 
 ---
 
