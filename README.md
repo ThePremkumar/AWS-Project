@@ -2,7 +2,7 @@
 
 These projects are perfect for AWS Solution Architect students because they learn Security Groups, NACLs, Route Tables, Internet Gateway, NAT Gateway, Public & Private Subnets together.
 
-## Project 1: Public Web Server Access Control
+## [Project 1: Public Web Server Access Control](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%201%20-%20Public%20Web%20Server%20Access)
 
 **Architecture**
 ```text
@@ -41,7 +41,7 @@ Public EC2 (Apache)
 
 ---
 
-## Project 2: NACL Blocking Website
+## [Project 2: NACL Blocking Website](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%202%20-%20NACL%20Blocking%20Website)
 
 **Architecture**
 ```text
@@ -68,7 +68,7 @@ Security Group allows but NACL denies = Traffic blocked
 
 ---
 
-## Project 3: Bastion Host to Private Server
+## [Project 3: Bastion Host to Private Server](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%203%20-%20Bastion%20Host%20to%20Private%20Server)
 
 **Architecture**
 ```text
@@ -104,7 +104,7 @@ Private EC2
 
 ---
 
-## Project 4: Public Web Server + Private Database
+## [Project 4: Public Web Server + Private Database](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%204%20-%20Public%20Web%20Server%20+%20Private%20Database)
 
 **Architecture**
 ```text
@@ -138,7 +138,7 @@ Students learn real-world 3-tier design.
 
 ---
 
-## Project 5: Security Group Stateful Demo
+## [Project 5: Security Group Stateful Demo](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%205%20-%20Security%20Group%20Stateful%20Demo)
 
 **Objective**
 Allow: `SSH TCP 22` only.
@@ -151,7 +151,7 @@ Return traffic automatically allowed.
 
 ---
 
-## Project 6: NACL Stateless Demo
+## [Project 6: NACL Stateless Demo](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%206%20-%20NACL%20Stateless%20Demo)
 
 **Objective**
 Allow inbound: `80`
@@ -166,7 +166,7 @@ Return traffic requires explicit rule.
 
 ---
 
-## Project 7: Secure Admin Network
+## [Project 7: Secure Admin Network](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%207%20-%20Secure%20Admin%20Network)
 
 **Scenario**
 Company Admin Team:
@@ -182,7 +182,7 @@ Production Security Practice
 
 ---
 
-## Project 8: Public vs Private EC2 Challenge
+## [Project 8: Public vs Private EC2 Challenge](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%208%20-%20Public%20vs%20Private%20EC2%20Challenge)
 
 **Deploy**
 * Public EC2: Public IP Enabled
@@ -203,7 +203,7 @@ Production Security Practice
 
 ---
 
-## Project 9: NAT Gateway Validation
+## [Project 9: NAT Gateway Validation](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%209%20-%20NAT%20Gateway%20Validation)
 
 **Architecture**
 ```text
@@ -224,7 +224,7 @@ Private instances access internet without public IP.
 
 ---
 
-## Project 10: Mini Production Architecture
+## [Project 10: Mini Production Architecture](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%2010%20-%20Mini%20Production%20Architecture)
 
 **Architecture**
 ```text
@@ -253,7 +253,7 @@ Complete AWS Solution Architect Design.
 
 ---
 
-## Final Interview Project (Best One)
+## [Final Interview Project (Best One)](https://github.com/ThePremkumar/AWS-Project/tree/main/Final%20Interview%20Project)
 
 **VPC**
 ```text
