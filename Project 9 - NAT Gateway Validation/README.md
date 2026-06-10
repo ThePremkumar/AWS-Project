@@ -9,7 +9,12 @@
 
 # 🌐 Project 9: NAT Gateway Validation
 
-## Architecture
+### 🎯 Objective
+- [x] Run `sudo dnf update -y` on a Private EC2
+- [x] Observe failure before NAT implementation
+- [x] Observe success after NAT implementation
+
+### 🏗️ Architecture
 ```text
 Internet
    │
@@ -18,13 +23,12 @@ NAT Gateway
 Private EC2
 ```
 
-## Objective
-Run: `sudo dnf update -y`
-Before NAT: ❌ Fail
-After NAT: ✅ Success
+### 📚 Learning Outcomes
+Understanding how Private instances securely access the internet without requiring a public IP address.
 
-## Learning
-Private instances access internet without public IP.
+
+
+
 
 ---
 
@@ -122,20 +126,20 @@ This architecture resolves this exact security conflict. It implements a secure 
 │                       │ SSH Proxy Hop                             │ Egress Request        │
 │                       ▼                                           │                       │
 │  ┌────────────────────┼───────────────────────────────────────────┼─────────────────────┐  │
-│  │ Subnet: Prem-Private-A (20.0.4.0/24)                                   │                     │  │
-│  │                    │                                           │                       │  │
-│  │  ┌─────────────────▼─────────────────┐                         │                       │  │
-│  │  │ EC2 Private Server                ├─────────────────────────┘                       │  │
-│  │  │ Private IP: 20.0.4.19             │ Outbound Update Request                         │  │
-│  │  │ Security Group: Private-SG        │ (sudo dnf update -y)                            │  │
-│  │  └───────────────────────────────────┘                                                 │  │
-│  │                                                                                     │  │
-│  │  ┌───────────────────────────────────┐                                                 │  │
-│  │  │ Private Route Table               │                                                 │  │
-│  │  │ Destination: 0.0.0.0/0 -> NAT-GW  │                                                 │  │
-│  │  └───────────────────────────────────┘                                                 │  │
-│  └─────────────────────────────────────────────────────────────────────────────────────┘  │
-└───────────────────────────────────────────────────────────────────────────────────────────┘
+│  │ Subnet: Prem-Private-A (20.0.4.0/24)                                                 │  │
+│  │                    │                                           │                     │  │
+│  │  ┌─────────────────▼─────────────────┐                         │                     │  │
+│  │  │ EC2 Private Server                ├─────────────────────────┘                     │  │
+│  │  │ Private IP: 20.0.4.19             │ Outbound Update Request                       │  │
+│  │  │ Security Group: Private-SG        │ (sudo dnf update -y)                          │  │
+│  │  └───────────────────────────────────┘                                               │  │
+│  │                                                                                      │  │
+│  │  ┌───────────────────────────────────┐                                               │  │
+│  │  │ Private Route Table               │                                               │  │
+│  │  │ Destination: 0.0.0.0/0 -> NAT-GW  │                                               │  │
+│  │  └───────────────────────────────────┘                                               │  │
+│  └──────────────────────────────────────────────────────────────────────────────────────┘  │
+└────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Architecture Traffic Flow Explanation

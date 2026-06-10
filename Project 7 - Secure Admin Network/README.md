@@ -9,17 +9,13 @@
 
 # 🔐 Project 7: Secure Admin Network
 
-## Scenario
-Company Admin Team:
-`192.168.1.10`
-`192.168.1.20`
-Only they can SSH.
+### 🎯 Objective
+- [x] Simulate Company Admin Team IPs: `192.168.1.10` and `192.168.1.20`.
+- [x] Ensure only these specific IPs can initiate SSH connections.
 
-## SG Rule
-`22` → Specific IP
+### 🛡️ Rules Configuration
+**SG Rule:** `Port 22` → `Specific IP /32`
 
-## Learning
-Production Security Practice
 
 ---
 
@@ -102,28 +98,28 @@ Exposing management interfaces to the public internet invites compromise through
  │  ┌─────────────────────────────────────────────────────────────────────┐  │
  │  │ Subnet: Prem-Public-A (subnet-07476134253af8471)                    │  │
  │  │                                                                     │  │
- │  │  ┌──────────────────────────────────────────────────────────────┐  │  │
+ │  │  ┌───────────────────────────────────────────────────────────────┐  │  │
  │  │  │ Security Group: webserver Apache (sg-0950304b5cf423e70)       │  │  │
- │  │  │                                                              │  │  │
- │  │  │ Inbound Rules:                                                 │  │  │
- │  │  │  ├─ sgr-05ecca8d58327a465: Allow SSH (22) from 27.7.187.252/32   │  │  │
- │  │  │  └─ sgr-0ab185bd952bfce30: Allow SSH (22) from 27.7.187.253/32   │  │  │
- │  │  │                                                              │  │  │
- │  │  │ Implicit Rules:                                              │  │  │
- │  │  │  └─ Deny all other inbound traffic (Implicit Deny)           │  │  │
- │  │  └───────────────────────┬──────────────────────┬───────────────┘  │  │
- │  │                          │                      │                  │  │
- │  │        Traffic from A:   │                      │ Traffic from B:  │  │
- │  │        ✅ MATCH / ALLOW  │                      │ ❌ NO MATCH /    │  │
- │  │                          ▼                      │    SILENT DROP   │  │
- │  │  ┌────────────────────────────────────────┐     │                  │  │
- │  │  │ EC2: NACL-Stateless-Demo               │     │                  │  │
- │  │  │ ID: i-011a9ce485a9f4c07                │     │                  │  │
- │  │  │ Public IP: 3.236.43.96                 │     │                  │  │
- │  │  │ Private IP: 20.0.1.32                  │     │                  │  │
- │  │  │ Hostname: ip-20-0-1-32.ec2.internal    │     │                  │  │
- │  │  └────────────────────────────────────────┘     ▼                  │  │
- │  │                                           [Dropped at SG]          │  │
+ │  │  │                                                               │  │  │
+ │  │  │ Inbound Rules:                                                │  │  │
+ │  │  │  ├─ sgr-05ecca8d58327a465: Allow SSH (22) from 27.7.187.252/32│  │  │
+ │  │  │  └─ sgr-0ab185bd952bfce30: Allow SSH (22) from 27.7.187.253/32│  │  │
+ │  │  │                                                               │  │  │
+ │  │  │ Implicit Rules:                                               │  │  │
+ │  │  │  └─ Deny all other inbound traffic (Implicit Deny)            │  │  │
+ │  │  └───────────────────────┬──────────────────────┬────────────────┘  │  │
+ │  │                          │                      │                   │  │
+ │  │        Traffic from A:   │                      │ Traffic from B:   │  │
+ │  │        ✅ MATCH / ALLOW  │                      │ ❌ NO MATCH /     │  │
+ │  │                          ▼                      │    SILENT DROP    │  │
+ │  │  ┌────────────────────────────────────────┐     │                   │  │
+ │  │  │ EC2: NACL-Stateless-Demo               │     │                   │  │
+ │  │  │ ID: i-011a9ce485a9f4c07                │     │                   │  │
+ │  │  │ Public IP: 3.236.43.96                 │     │                   │  │
+ │  │  │ Private IP: 20.0.1.32                  │     │                   │  │
+ │  │  │ Hostname: ip-20-0-1-32.ec2.internal    │     │                   │  │
+ │  │  └────────────────────────────────────────┘     ▼                   │  │
+ │  │                                           [Dropped at SG]           │  │
  │  └─────────────────────────────────────────────────────────────────────┘  │
  └───────────────────────────────────────────────────────────────────────────┘
 ```

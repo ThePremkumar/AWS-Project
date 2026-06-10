@@ -71,16 +71,16 @@ This project answers that question with a live SSH session as proof — the resp
 ## 🏗️ Architecture Diagram
 
 ```
-┌────────────────────────────────────────────────────────────────────────────┐
-│                           ADMIN WORKSTATION                                │
-│                    SSH Client → key: aws-new (.pem)                        │
-│                    Source port: ephemeral (e.g., 54321)                    │
-└────────────────────────────────┬───────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────── ┐
+│                           ADMIN WORKSTATION                                 │
+│                    SSH Client → key: aws-new (.pem)                         │
+│                    Source port: ephemeral (e.g., 54321)                     │
+└────────────────────────────────┬─────────────────────────────────────────── ┘
                                  │  TCP :22 (SYN)
                                  ▼
 ┌────────────────────────────────────────────────────────────────────────────┐
 │                      INTERNET GATEWAY (IGW)                                │
-│              Attached to vpc-05f63b6d0d18fa5ff (Prem-VPC)                 │
+│              Attached to vpc-05f63b6d0d18fa5ff (Prem-VPC)                  │
 └────────────────────────────────┬───────────────────────────────────────────┘
                                  │
                                  ▼
@@ -89,23 +89,23 @@ This project answers that question with a live SSH session as proof — the resp
 │                                                                            │
 │  ┌──────────────────────────────────────────────────────────────────────┐  │
 │  │  Subnet — us-east-1a                                                 │  │
-│  │  Private IP: 20.0.1.179 (ip-20-0-1-179.ec2.internal)                │  │
+│  │  Private IP: 20.0.1.179 (ip-20-0-1-179.ec2.internal)                 │  │
 │  │                                                                      │  │
 │  │  ┌────────────────────────────────────────────────────────────────┐  │  │
 │  │  │  Security Group: SG-Stateful-Demo (sg-0ccf44e5be48616cd)       │  │  │
 │  │  │                                                                │  │  │
 │  │  │  INBOUND RULES (1):                                            │  │  │
-│  │  │    sgr-02b89951d38d00c48 · SSH · TCP · port 22 · IPv4 ✅       │  │  │
+│  │  │    sgr-02b89951d38d00c48 · SSH · TCP · port 22 · IPv4 ✅      │  │  │
 │  │  │                                                                │  │  │
 │  │  │  OUTBOUND RULES (1 — default):                                 │  │  │
 │  │  │    All traffic · All protocols · All ports · 0.0.0.0/0 ✅      │  │  │
 │  │  │                                                                │  │  │
 │  │  │  STATEFUL TRACKING:                                            │  │  │
 │  │  │    Inbound TCP :22 ALLOW → connection state tracked            │  │  │
-│  │  │    Return traffic (ephemeral port) → auto-permitted ✅          │  │  │
+│  │  │    Return traffic (ephemeral port) → auto-permitted ✅         │  │  │
 │  │  └────────────────────────────┬───────────────────────────────────┘  │  │
-│  │                               │  ✅ ALLOWED                           │  │
-│  │                               ▼                                       │  │
+│  │                               │  ✅ ALLOWED                          │  │
+│  │                               ▼                                      │  │
 │  │  ┌────────────────────────────────────────────────────────────────┐  │  │
 │  │  │  EC2: SG-Stateful-Demo (i-06edc76dad124e1bb)                   │  │  │
 │  │  │  Instance type: t3.micro                                       │  │  │

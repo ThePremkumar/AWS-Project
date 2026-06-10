@@ -10,16 +10,13 @@
 
 # 🔄 Project 6: NACL Stateless Demo
 
-## Objective
-Allow inbound: `80`
-Remove outbound ephemeral ports: `1024-65535`
+### 🎯 Objective
+- [x] Allow inbound HTTP `80`.
+- [x] Remove outbound ephemeral ports `1024-65535` in NACL.
+- [x] Observe the website connection failure.
 
-**Result:**
-Website fails.
-
-## Learning
-NACL = Stateless
-Return traffic requires explicit rule.
+### 📚 Learning Outcomes
+**Network ACLs are Stateless.** Return traffic absolutely requires an explicit outbound rule to succeed.
 
 ---
 
@@ -98,26 +95,26 @@ This project answers that precisely — the response packets use ephemeral ports
 │  ┌─────────────────────────────────────────────────────────────────────┐  │
 │  │  Subnet (associated with Prem-NACL — 4 subnets total)               │  │
 │  │                                                                     │  │
-│  │  ┌──────────────────────────────────────────────────────────────┐   │  │
-│  │  │  Prem-NACL Inbound (acl-07375eceb789a6633)                    │   │  │
-│  │  │  Rule 101: HTTP  :80  TCP(6)  0.0.0.0/0  ✅ Allow             │   │  │
-│  │  │  Rule 102: SSH   :22  TCP(6)  0.0.0.0/0  ✅ Allow             │   │  │
-│  │  │  Rule  * : All traffic        0.0.0.0/0  ❌ Deny              │   │  │
-│  │  └──────────────────────────┬───────────────────────────────────┘   │  │
-│  │                             │  ✅ PASS — :80 matched rule 101        │  │
-│  │                             ▼                                        │  │
-│  │  ┌──────────────────────────────────────────────────────────────┐   │  │
-│  │  │  EC2 + Apache httpd                                           │   │  │
-│  │  │  Public IP: 44.223.15.90                                      │   │  │
-│  │  │  Apache processes request → generates HTTP response           │   │  │
-│  │  └──────────────────────────┬───────────────────────────────────┘   │  │
-│  │                             │  Response → ephemeral port :54321      │  │
-│  │                             ▼                                        │  │
-│  │  ┌──────────────────────────────────────────────────────────────┐   │  │
-│  │  │  Prem-NACL Outbound (PHASE 1 — no blocking rule)             │   │  │
-│  │  │  (All outbound allowed in initial state)                     │   │  │
-│  │  │  Response exits subnet ✅                                     │   │  │
-│  │  └──────────────────────────────────────────────────────────────┘   │  │
+│  │  ┌───────────────────────────────────────────────────────────────┐  │  │
+│  │  │  Prem-NACL Inbound (acl-07375eceb789a6633)                    │  │  │
+│  │  │  Rule 101: HTTP  :80  TCP(6)  0.0.0.0/0  ✅ Allow             │  │  │
+│  │  │  Rule 102: SSH   :22  TCP(6)  0.0.0.0/0  ✅ Allow             │  │  │
+│  │  │  Rule  * : All traffic        0.0.0.0/0  ❌ Deny              │  │  │
+│  │  └──────────────────────────┬────────────────────────────────────┘  │  │
+│  │                             │  ✅ PASS — :80 matched rule 101       │  │
+│  │                             ▼                                       │  │
+│  │  ┌───────────────────────────────────────────────────────────────┐  │  │
+│  │  │  EC2 + Apache httpd                                           │  │  │
+│  │  │  Public IP: 44.223.15.90                                      │  │  │
+│  │  │  Apache processes request → generates HTTP response           │  │  │
+│  │  └──────────────────────────┬────────────────────────────────────┘  │  │
+│  │                             │  Response → ephemeral port :54321     │  │
+│  │                             ▼                                       │  │
+│  │  ┌───────────────────────────────────────────────────────────────┐  │  │
+│  │  │  Prem-NACL Outbound (PHASE 1 — no blocking rule)              │  │  │
+│  │  │  (All outbound allowed in initial state)                      │  │  │
+│  │  │  Response exits subnet ✅                                     │  │  │
+│  │  └───────────────────────────────────────────────────────────────┘  │  │
 │  └─────────────────────────────────────────────────────────────────────┘  │
 └───────────────────────────────────────────────────────────────────────────┘
 
@@ -146,7 +143,7 @@ Result → Browser: HTTP 200 ✅  "Project 6: NACL Stateless Demo — Apache Web
                                     ▼
 ┌───────────────────────────────────────────────────────────────────────────┐
 │  EC2 / Apache                                                             │
-│  Request RECEIVED ✅ · Response GENERATED ✅                               │
+│  Request RECEIVED ✅ · Response GENERATED ✅                              │
 │  Response addressed to: client-ip:54321 (ephemeral port)                  │
 └───────────────────────────────────┬───────────────────────────────────────┘
                                     │  Outbound response packet
