@@ -31,6 +31,9 @@ These projects are perfectly structured to help students master **Security Group
 | **8** | Public vs Private EC2 Challenge | Direct vs Bastion Connectivity | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%208%20-%20Public%20vs%20Private%20EC2%20Challenge) |
 | **9** | NAT Gateway Validation | Internet Egress for Private EC2s | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%209%20-%20NAT%20Gateway%20Validation) |
 | **10** | Mini Production Architecture | Full Solution Architect Design | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%2010%20-%20Mini%20Production%20Architecture) |
+| **L1** | AWS Lambda Execution Model | Introduction to Serverless | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%201%20-%20AWS%20Lambda%20Execution%20Model) |
+| **L2** | Reading Data from Lambda Event | Parsing Event Data | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%202%20-%20Reading%20Data%20from%20Lambda%20Event) |
+| **L3** | AWS Lambda + S3 Integration | S3 Event Triggers | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%203%20-%20AWS%20Lambda%20+%20S3%20Integration) |
 | **🏆** | **Final Interview Project** | Comprehensive Exam Simulation | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Final%20Interview%20Project) |
 
 ---
@@ -233,6 +236,33 @@ flowchart TD
 
 ### 📚 Learning Outcomes
 Execution of a Complete AWS Solution Architect Design.
+
+---
+
+## ⚡ [Lambda 1: AWS Lambda Execution Model](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%201%20-%20AWS%20Lambda%20Execution%20Model)
+
+### 🎯 Objective
+- [x] Create a simple AWS Lambda function.
+- [x] Configure Test Events (JSON).
+- [x] Review the Execution Results.
+
+---
+
+## ⚡ [Lambda 2: Reading Data from Lambda Event](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%202%20-%20Reading%20Data%20from%20Lambda%20Event)
+
+### 🎯 Objective
+- [x] Create custom event payloads.
+- [x] Extract and process data from the event object within the Lambda function.
+- [x] Validate output based on input parameters.
+
+---
+
+## ⚡ [Lambda 3: AWS Lambda + S3 Integration](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%203%20-%20AWS%20Lambda%20+%20S3%20Integration)
+
+### 🎯 Objective
+- [x] Configure an S3 Bucket to trigger a Lambda function on object creation.
+- [x] Verify the Lambda function execution.
+- [x] Monitor execution details via Amazon CloudWatch Logs.
 
 ---
 
