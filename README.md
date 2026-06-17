@@ -1,6 +1,7 @@
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Amazon VPC](https://img.shields.io/badge/Amazon%20VPC-8C4FFF?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Amazon EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
+![Amazon RDS](https://img.shields.io/badge/Amazon%20RDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white)
 ![Security Groups](https://img.shields.io/badge/Security%20Groups-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Network ACL](https://img.shields.io/badge/Network%20ACL-E8622A?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)
@@ -31,6 +32,7 @@ These projects are perfectly structured to help students master **Security Group
 | **8** | Public vs Private EC2 Challenge | Direct vs Bastion Connectivity | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%208%20-%20Public%20vs%20Private%20EC2%20Challenge) |
 | **9** | NAT Gateway Validation | Internet Egress for Private EC2s | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%209%20-%20NAT%20Gateway%20Validation) |
 | **10** | Mini Production Architecture | Full Solution Architect Design | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Project%2010%20-%20Mini%20Production%20Architecture) |
+| **DB** | RDS via EC2 | Managed Database & EC2 Connectivity | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/RDS%20via%20EC2) |
 | **L1** | AWS Lambda Execution Model | Introduction to Serverless | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%201%20-%20AWS%20Lambda%20Execution%20Model) |
 | **L2** | Reading Data from Lambda Event | Parsing Event Data | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%202%20-%20Reading%20Data%20from%20Lambda%20Event) |
 | **L3** | AWS Lambda + S3 Integration | S3 Event Triggers | [View Project](https://github.com/ThePremkumar/AWS-Project/tree/main/Lambda%203%20-%20AWS%20Lambda%20+%20S3%20Integration) |
@@ -236,6 +238,45 @@ flowchart TD
 
 ### 📚 Learning Outcomes
 Execution of a Complete AWS Solution Architect Design.
+
+---
+
+## 🗄️ [RDS via EC2: Amazon RDS MySQL + EC2 Connectivity](https://github.com/ThePremkumar/AWS-Project/tree/main/RDS%20via%20EC2)
+
+### 🎯 Objective
+- [x] Provision an Amazon RDS MySQL instance in a private subnet
+- [x] Connect to RDS from an EC2 instance using the MySQL CLI
+- [x] Create and query 5 real-world database schemas
+- [x] Create a manual RDS snapshot and verify backup
+- [x] Provision a Read Replica from the primary RDS instance
+
+### 🏗️ Architecture
+```mermaid
+flowchart TD
+    Developer((Developer)) --> EC2[EC2 Instance : MySQL Client]
+    EC2 -- Port 3306 --> RDS[(Amazon RDS : MySQL)]
+    RDS -- Async Replication --> Replica[(Read Replica)]
+```
+
+### 🛡️ Rules Configuration
+**EC2-SG:** `Port 22` from `Your IP /32` <br/>
+**RDS-SG:** `Port 3306` from `EC2-SG (Group Reference)`
+
+### 🗃️ Databases Created
+| Database | Domain |
+|---|---|
+| StudentDB | Education |
+| EmployeeDB | HR / Enterprise |
+| LibraryDB | Operations |
+| HospitalDB | Healthcare |
+| ShoppingDB | E-Commerce |
+
+### 📚 Learning Outcomes
+✅ EC2-to-RDS Connectivity via Security Group Reference <br/>
+✅ Amazon RDS Managed Database (no self-managed MySQL) <br/>
+✅ RDS Automated Backups & Manual Snapshots <br/>
+✅ Read Replica for Horizontal Read Scaling <br/>
+✅ Private Subnet Database Isolation Pattern
 
 ---
 
